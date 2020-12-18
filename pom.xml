@@ -45,12 +45,18 @@
    			<groupId>org.springframework.boot</groupId>
    			<artifactId>spring-boot-starter-data-jpa</artifactId>
   		</dependency>
+  		<dependency>
+  			<groupId>org.hibernate</groupId>
+  			<artifactId>hibernate-validator</artifactId>
+  			<version>5.2.4.Final</version>
+  		</dependency>
    		<dependency>
    			<groupId>mysql</groupId>
    			<artifactId>mysql-connector-java</artifactId>
    			<version>8.0.20</version>
    			<scope>compile</scope>
   		</dependency>
+ 
 	</dependencies>
 
 	<build>
