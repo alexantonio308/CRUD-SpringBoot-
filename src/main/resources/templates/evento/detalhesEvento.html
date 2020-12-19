@@ -27,7 +27,7 @@
 			</div>
 		</nav>
 	</header>
-	<div th:each="eventos : ${evento}" class="container detalhesEvento">
+	<div th:each="evento : ${evento}" class="container detalhesEvento">
 		<h5>Detalhes do Evento</h5>
 		<div class="row">
 			<p>Nome: <span th:text="${evento.nome}"></span></p>
@@ -44,17 +44,19 @@
 			<button class="waves-effect waves-light btn" type="submit">Adicionar</button>
 		</form>
 	</div>
-	<table class="container tabelaConvidado" th:each="convidado : ${convidados}">
+	<table class="container tabelaConvidado">
 		<thead>
 			<tr>
 				<th>Nome Convidado</th>
 				<th>RG</th>
+				<th>Deletar</th>
 			</tr>
 		</thead>
 		<tbody>
 			<tr th:each="convidado :${convidados}">
 				<td><span th:text="${convidado.nomeConvidado}"></span></td>
 				<td><span th:text="${convidado.rg}"></span></td>
+				<td><a class="waves-effect waves-light btn-small" th:href="${(#mvc.url('EC#deletarConvidado').arg(0, convidado.rg)).build()}"><i class="material-icons left">delete</i></a></td>
 			</tr>
 			<tr></tr>
 		</tbody>
