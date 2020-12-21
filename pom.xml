@@ -15,7 +15,6 @@
 	<description>Demo project for Spring Boot</description>
 
 	<properties>
-		<java.version>11</java.version>
 		    <property name="hibernate.connection.url" value="jdbc:mysql://localhost:3306/eventosapp?useTimezone=true&amp;serverTimezone=UTC"/>
 		
 	</properties>
@@ -65,6 +64,44 @@
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
 			</plugin>
+			    <plugin>
+                    <groupId>com.heroku.sdk</groupId>
+                    <artifactId>heroku-maven-plugin</artifactId>
+                    <version>2.0.8</version>
+                </plugin>
+              <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-compiler-plugin</artifactId>
+            <version>3.8.0</version>
+            <configuration>
+                <release>12</release>
+                <compilerArgs>--enable-preview</compilerArgs>
+            </configuration>
+        </plugin>
+        <!-- This is just to make sure the class is set as main class to execute from the jar-->
+        <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-shade-plugin</artifactId>
+            <version>3.1.0</version>
+            <executions>
+                <execution>
+                    <phase>package</phase>
+                    <goals>
+                        <goal>shade</goal>
+                    </goals>
+                    <configuration>
+                        <transformers>
+                            <transformer
+                                    implementation="org.apache.maven.plugins.shade.resource.ServicesResourceTransformer"/>
+                            <transformer
+                                    implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
+                                <mainClass>com.stackoverflow.nullpointer.expression.SwitchExpressions</mainClass>
+                            </transformer>
+                        </transformers>
+                    </configuration>
+                </execution>
+            </executions>
+        </plugin>
 		</plugins>
 	</build>
 
